@@ -1,22 +1,26 @@
 import React from "react";
-import data from "../data/data";
-import 'empolyee.scss';
-import Ticket from "ticket";
+import './employee.scss';
+import Ticket from "./ticket";
 
-const Empolyee = (props) => {
+const EmployeeCards = (props) => {
 
-    data.team.forEach(i => {
-        props.name = data.team[i].name;
-        props.role = data.team[i].role;
-    });    
+    const {roles} = props;
+    
+    //console.log(roles)
 
+    const employeeCards = roles.map((employee) => {
+        return (
+            <div className="employee-card">
+                <h4>{employee.name}</h4>
+                <p>{employee.role}</p>
+                <Ticket />
+            </div>
+        )
+    })
+    
     return (
-        <div className="employee-card">
-            <h3>{props.name}</h3>
-            <h4>{props.role}</h4>
-            <Ticket />
-        </div>
-    )
+        employeeCards
+    )    
 }
 
-export default Empolyee;
+export default EmployeeCards;
